@@ -20,7 +20,6 @@ public class Dead extends Task<ClientContext> {
 
     @Override
     public void execute(Area area) {
-
         ctx.inventory.select().id(gear).action("Wear");
         ctx.inventory.select().id(gear).action("Wield");
     }
