@@ -1,8 +1,5 @@
 package scripts;
 
-
-
-
 import org.powerbot.script.Area;
 import org.powerbot.script.PollingScript;
 import org.powerbot.script.Script;
@@ -13,10 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 @Script.Manifest(name="Chicken Killer", description = "hi", properties = "author=brian; topic=999; client=4;")
-
-
 
 public class ChickenKiller extends PollingScript<ClientContext> {
     //final static int CHICKEN_IDS[] = {1173, 1174};
@@ -41,17 +35,14 @@ public class ChickenKiller extends PollingScript<ClientContext> {
     public void stop() {
 
     }
-
+    
     @Override
     public void poll() {
         for (Task task: taskList){
             if (task.activate()){
                 task.execute(LUMBRIDGE_COW_AREA);
                 break;
-
             }
-
         }
-        
     }
 }
