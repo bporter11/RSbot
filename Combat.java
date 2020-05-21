@@ -1,6 +1,5 @@
 package scripts;
 
-
 import org.powerbot.script.Area;
 import org.powerbot.script.Condition;
 import org.powerbot.script.rt4.BasicQuery;
@@ -15,25 +14,19 @@ public class Combat extends Task<ClientContext> {
     final private int COW_IDS[] = {2794, 2793, 2790, 2791, 2792};
     Random random = new Random();
 
-
-
-
-
     public Combat(ClientContext ctx)
     {
         super(ctx);
     }
-
+    
     @Override
     public boolean activate() {
         return  !me.inCombat() && !me.interacting().name().equals(COW_IDS) &&
         ctx.npcs.select().select(npc->npc.interacting().equals(me)).isEmpty();
-
     }
 
     @Override
     public void execute(Area area) {
-
          Npc cow = ctx.npcs
                  .select()
                  .name("Cow")
@@ -42,7 +35,6 @@ public class Combat extends Task<ClientContext> {
                  .select(npc -> !npc.interacting().valid() &&
                          npc.healthPercent() > 0 &&
                          npc.tile().matrix(ctx).reachable()).poll();
-
 
         if (cow.inViewport()){
             ctx.camera.pitch(30 +random.nextInt(30));
@@ -54,14 +46,5 @@ public class Combat extends Task<ClientContext> {
         cow.interact("Attack");
 
         Condition.wait(()->!me.interacting().name().equals("Chicken"),1000);
-
-
-
         }
-
-
-
-
 }
-
-
