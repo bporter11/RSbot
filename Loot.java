@@ -16,12 +16,6 @@ public class Loot extends Task<ClientContext> {
     int randomInt = random.nextInt(50);
     Player me = ctx.players.local();
 
-    //final static int bones = 526;
-    //final static int chicken = 2138;
-
-
-
-
     @Override
     public boolean activate() {
         return (!me.inCombat() && !ctx.inventory.isFull() &&
@@ -40,11 +34,5 @@ public class Loot extends Task<ClientContext> {
              ctx.camera.pitch(30 + random.nextInt(30));;
          cowHide.interact("Take", "Cowhide");
          Condition.wait(()->!cowHide.valid(),1000);
-
-
-
-
-
-
     }
 }
